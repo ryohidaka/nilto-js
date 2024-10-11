@@ -27,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryohidaka/nilto.git"
+    "url": "git+https://github.com/ryohidaka/nilto-js.git"
   },
   "author": "ryohidaka",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ryohidaka/nilto/issues"
+    "url": "https://github.com/ryohidaka/nilto-js/issues"
   },
-  "homepage": "https://github.com/ryohidaka/nilto#readme",
+  "homepage": "https://github.com/ryohidaka/nilto-js#readme",
   "devDependencies": {
     "@types/node": "^22.7.5",
     "@vitest/coverage-v8": "^2.1.2",

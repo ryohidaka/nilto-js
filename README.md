@@ -1,8 +1,8 @@
 # nilto
 
 [![NPM Version](https://img.shields.io/npm/v/nilto?logo=npm)](https://www.npmjs.com/package/nilto)
-![build](https://github.com/ryohidaka/nilto/workflows/Build/badge.svg)
-[![codecov](https://codecov.io/gh/ryohidaka/nilto/graph/badge.svg?token=RHP9TB2F51)](https://codecov.io/gh/ryohidaka/nilto)
+![build](https://github.com/ryohidaka/nilto-js/workflows/Build/badge.svg)
+[![codecov](https://codecov.io/gh/ryohidaka/nilto-js/graph/badge.svg?token=RHP9TB2F51)](https://codecov.io/gh/ryohidaka/nilto-js)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
