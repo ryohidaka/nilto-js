@@ -3,6 +3,6 @@ import { describe, it } from "vitest";
 
 describe("Nilto", () => {
   it("init", () => {
-    const client = new Nilto();
+    const client = new Nilto("test-key");
   });
 });
