@@ -19,23 +19,68 @@ npm install nilto
 
 ## Functions
 
-### `hoge(): string`
+### `getContents(params?: GetContentsParams): Promise<GetContentsResponse>`
+
+指定した条件に合うコンテンツの配列を取得します。
 
 #### Parameters
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-|           |      |             |
+| Parameter | Type                | Description                |
+| --------- | ------------------- | -------------------------- |
+| `params`  | `GetContentsParams` | コンテンツの絞り込み条件。 |
 
 #### Returns
 
-## Usage Example
+| Type                           | Description                                                        |
+| ------------------------------ | ------------------------------------------------------------------ |
+| `Promise<GetContentsResponse>` | コンテンツの配列および関連メタデータを含むレスポンスオブジェクト。 |
+
+#### Usage Example
 
 ```ts
-import {} from "nilto";
+import { Nilto } from "nilto";
+
+const nilto = new Nilto("your-api-key");
+const params: GetContentsParams = {
+  model: "blog_articles",
+  limit: 10,
+  offset: 0,
+};
+const contentsResponse = await nilto.getContents(params);
+console.log(contentsResponse.contents);
+```
+
+### `getContentsID(contentId: string): Promise<GetContentResponse>`
+
+指定した ID のコンテンツを取得します。
+
+#### Parameters
+
+| Parameter   | Type     | Description               |
+| ----------- | -------- | ------------------------- |
+| `contentId` | `string` | 取得するコンテンツの ID。 |
+
+#### Returns
+
+| Type                          | Description                                                                      |
+| ----------------------------- | -------------------------------------------------------------------------------- |
+| `Promise<GetContentResponse>` | 指定されたコンテンツ ID に対応するコンテンツデータを含むレスポンスオブジェクト。 |
+
+#### Usage Example
+
+```ts
+import { Nilto } from "nilto";
+
+const nilto = new Nilto("your-api-key");
+const contentId = "12345";
+const contentResponse = await nilto.getContentsID(contentId);
+console.log(contentResponse.content);
 ```
 
 ## Link
+
+- [NILTO (ニルト) - チームの理想を実現するヘッドレス CMS](https://www.nilto.com/ja)
+- [NILTO Developer API リファレンス](https://www.nilto.com/api)
 
 ## License
 
