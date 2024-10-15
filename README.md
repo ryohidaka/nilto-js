@@ -1,4 +1,4 @@
-# nilto
+# nilto-js
 
 [![NPM Version](https://img.shields.io/npm/v/nilto?logo=npm)](https://www.npmjs.com/package/nilto)
 ![build](https://github.com/ryohidaka/nilto-js/workflows/Build/badge.svg)
