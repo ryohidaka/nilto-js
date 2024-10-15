@@ -2,25 +2,43 @@ import { Nilto } from "..";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
-    <table id="articles-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>CreatedAt</th>
-          <th>PublishedAt</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <section>
+      <h3>一覧表示</h3>
+      <table id="articles-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>CreatedAt</th>
+            <th>PublishedAt</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3>詳細表示</h3>
+      <p>
+        <span>ID: </span>
+        <span id="content-id"></span>
+      </p>
+       <p>
+        <span>Title: </span>
+        <span id="content-title"></span>
+      </p>
   </div>
 `;
 
 const apiKey = import.meta.env.VITE_NILTO_API_KEY;
 const client = new Nilto(apiKey);
 
-const contents = await client.getContents({ model: "blog_articles" });
+/**
+ * コンテンツ一覧取得
+ */
+const model = import.meta.env.VITE_SAMPLE_MODEL;
+const contents = await client.getContents({ model });
 const tableBody = document.querySelector<HTMLTableSectionElement>(
   "#articles-table tbody",
 );
@@ -46,3 +64,14 @@ contents.data.forEach(({ _id, title, _created_at, _published_at, _status }) => {
   cells.forEach((cell) => row.appendChild(cell));
   tableBody?.appendChild(row);
 });
+
+/**
+ * コンテンツ詳細取得
+ */
+const contentId = import.meta.env.VITE_SAMPLE_CONTENT_ID;
+const content = await client.getContentsID(contentId);
+
+document.querySelector<HTMLSpanElement>("#content-id")!.textContent =
+  content._id;
+document.querySelector<HTMLSpanElement>("#content-title")!.textContent =
+  content.title;
