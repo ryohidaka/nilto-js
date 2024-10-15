@@ -1,4 +1,8 @@
-import { GetContentsParams, GetContentsResponse } from "./types";
+import {
+  GetContentResponse,
+  GetContentsParams,
+  GetContentsResponse,
+} from "./types";
 import { fetcher } from "./utils";
 
 /**
@@ -61,6 +65,35 @@ export class Nilto {
     }
 
     const res = await fetcher<GetContentsResponse>(this.apiKey, url.toString());
+
+    return res;
+  }
+
+  /**
+   * コンテンツを取得
+   *
+   * 指定したIDのコンテンツを取得します。
+   *
+   * @async
+   * @method getContentsID
+   * @param {string} contentId - 取得するコンテンツのID
+   * @returns {Promise<GetContentResponse>} 指定されたコンテンツIDに対応するコンテンツデータを含むレスポンスオブジェクト。
+   *
+   * @throws {Error} コンテンツが見つからない場合やネットワークエラーが発生した場合にスローされます。
+   *
+   * @see {@link https://www.nilto.com/api#tag/Contents-GET-API/operation/get-contents-id} APIドキュメント
+   *
+   * @example
+   * ```typescript
+   * const contentId = '12345';
+   * const contentResponse = await nilto.getContentsID(contentId);
+   * console.log(contentResponse.content);
+   * ```
+   */
+  async getContentsID(contentId: string): Promise<GetContentResponse> {
+    const url = new URL(`${this.baseUrl}/contents/${contentId}`);
+
+    const res = await fetcher<GetContentResponse>(this.apiKey, url.toString());
 
     return res;
   }

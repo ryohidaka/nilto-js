@@ -30,6 +30,11 @@ export type GetContentsResponse = {
 };
 
 /**
+ * 特定のコンテンツを取得APIのレスポンス
+ */
+export type GetContentResponse = Content;
+
+/**
  * コンテンツ情報
  */
 export type Content = {
