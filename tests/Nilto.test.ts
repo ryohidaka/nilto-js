@@ -1,9 +1,6 @@
 import { Nilto } from "../src";
 import { describe, expect, it, Mock, vi } from "vitest";
 
-// fetchをモック化
-global.fetch = vi.fn();
-
 describe("Nilto", () => {
   it("init", () => {
     const client = new Nilto("test-key");
@@ -12,7 +9,7 @@ describe("Nilto", () => {
   it("getContents", async () => {
     // モックレスポンス設定
     const mockResponse = { data: "test data" };
-    (global.fetch as Mock).mockResolvedValue({
+    (vi.spyOn(global, "fetch") as Mock).mockResolvedValue({
       ok: true,
       json: vi.fn().mockResolvedValue(mockResponse),
     });
@@ -31,7 +28,7 @@ describe("Nilto", () => {
       _title: "sample",
     };
 
-    (global.fetch as Mock).mockResolvedValue({
+    (vi.spyOn(global, "fetch") as Mock).mockResolvedValue({
       ok: true,
       json: vi.fn().mockResolvedValue(mockResponse),
     });
