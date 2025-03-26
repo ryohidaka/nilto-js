@@ -29,7 +29,7 @@ describe("fetcher", () => {
 
   it("エラーレスポンスをスローする", async () => {
     // モックエラーレスポンス設定
-    const errorData = { message: "error" };
+    const errorData = "Bad Request: リクエストパラメータが不正";
     (vi.spyOn(global, "fetch") as Mock).mockResolvedValue({
       ok: false,
       status: 400,
@@ -42,7 +42,10 @@ describe("fetcher", () => {
   });
 
   it("NiltoErrorがスローされた場合に再スローされる", async () => {
-    const customError = new NiltoError(500, "Internal Server Error");
+    const customError = new NiltoError(
+      500,
+      "Internal Server Error: NILTOサーバー内におけるエラー",
+    );
 
     // fetchがNiltoErrorをスローするように設定
     (vi.spyOn(global, "fetch") as Mock).mockRejectedValue(customError);
