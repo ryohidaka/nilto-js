@@ -7,7 +7,7 @@
 
 ## Overview
 
-JavaScript SDK Client for [NILTO](https://www.nilto.com/ja).
+非公式 JavaScript SDK クライアント for [NILTO](https://www.nilto.com/ja).
 
 ## Installation
 
