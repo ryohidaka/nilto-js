@@ -1,4 +1,4 @@
-import type { Content } from "../models/mod.ts";
+import type { Content } from "@hidaka/nilto";
 
 /**
  * コンテンツの配列を取得するパラメータ
@@ -82,6 +82,32 @@ export type GetContentsResponse = {
   /** コンテンツの配列 */
   data: Content[];
 };
+
+/**
+ * コンテンツを取得するパラメータ
+ *
+ * @see https://www.nilto.com/api#tag/Contents-GET-API/operation/get-contents-id
+ */
+export interface GetContentParams {
+  /**
+   * データを取得するフィールドを指定します。カンマ区切りで複数指定できます。省略するとすべてのフィールドを取得します。
+   * * Example: `select=_id,description`
+   */
+  select?: string;
+
+  /**
+   * 参照するコンテンツのオブジェクトを取得する深度を指定します。
+   * * Default: `1`
+   * * Example: `depth=3`
+   */
+  depth: Depth;
+
+  /**
+   * 取得したいコンテンツの言語を指定します。省略するとメイン言語の内容を取得します。
+   * * Example: `lang=ja`
+   */
+  lang?: string;
+}
 
 /**
  * 動的なクエリ条件の定義

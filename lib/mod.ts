@@ -1,9 +1,14 @@
-import type { GetContentsParams, GetContentsResponse } from "@hidaka/nilto";
+import type {
+  Content,
+  GetContentParams,
+  GetContentsParams,
+  GetContentsResponse,
+} from "@hidaka/nilto";
 import { buildQueryParams, request } from "./client/mod.ts";
 import { DEFAULT_DEPTH, DEFAULT_LIMIT, DEFAULT_OFFSET } from "./constants.ts";
 
 export * from "./contents/mod.ts";
-export * from "./models/content.ts";
+export * from "./models/mod.ts";
 
 /**
  * NILTO SDK for JavaScript
@@ -61,6 +66,38 @@ export class Nilto {
     });
 
     return this.get<GetContentsResponse>(`contents?${query}`);
+  }
+
+  /**
+   * コンテンツを取得
+   *
+   * @param id - コンテンツのID
+   * @param params - クエリパラメータのオブジェクト
+   * @returns コンテンツ情報
+   * @throws Error
+   *
+   * @see https://www.nilto.com/api#tag/Contents-GET-API/operation/get-contents
+   *
+   * @example 使用例
+   * ```ts
+   * import { Nilto } from '@hidaka/nilto';
+   *
+   * const nilto = new Nilto('your-api-key-here');
+   * const content = await nilto.getContentById("1234567890");
+   *
+   * console.table(content);
+   * ```
+   */
+  getContentById(
+    id: string,
+    params: Partial<GetContentParams> = {},
+  ): Promise<Content> {
+    // クエリ文字列を取得
+    const query = buildQueryParams(params, {
+      depth: DEFAULT_DEPTH,
+    });
+
+    return this.get<Content>(`contents/${id}?${query}`);
   }
 
   /**
