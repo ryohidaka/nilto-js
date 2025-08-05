@@ -4,7 +4,8 @@
   "description": "JavaScript SDK Client for NILTO.",
   "exports": "./mod.ts",
   "tasks": {
-    "dev": "deno test --watch"
+    "dev": "deno test --watch --allow-read --allow-net",
+    "test": "deno test --allow-read --allow-net --doc --parallel"
   },
   "license": "MIT",
   "imports": {
