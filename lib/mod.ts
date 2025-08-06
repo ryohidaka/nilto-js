@@ -19,4 +19,13 @@ export class Nilto {
   constructor(apiKey: string) {
     this.apiKey = apiKey;
   }
+
+  /**
+   * 共通Get処理
+   * @param path - リクエストパス
+   * @returns
+   */
+  private get<T>(path: string): Promise<T> {
+    return request<T>("GET", path, this.apiKey);
+  }
 }
