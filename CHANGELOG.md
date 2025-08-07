@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/ryohidaka/nilto-js/compare/v0.1.0...v0.2.0) (2025-08-07)
+
+
+### Miscellaneous Chores
+
+* release 0.2.0 ([5c540b6](https://github.com/ryohidaka/nilto-js/commit/5c540b6f2f604752b303dd94f9117858ab202c46))
+
 ## 0.1.0 (2024-10-15)
 
 
