@@ -1,7 +1,8 @@
 # nilto-js
 
 [![NPM Version](https://img.shields.io/npm/v/nilto?logo=npm)](https://www.npmjs.com/package/nilto)
-![build](https://github.com/ryohidaka/nilto-js/workflows/Build/badge.svg)
+[![JSR Version](https://img.shields.io/jsr/v/%40hidaka/nilto?logo=jsr)](https://jsr.io/@hidaka/nilto)
+[![CI](https://github.com/ryohidaka/nilto-js/actions/workflows/ci.yml/badge.svg)](https://github.com/ryohidaka/nilto-js/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/ryohidaka/nilto-js/graph/badge.svg?token=RHP9TB2F51)](https://codecov.io/gh/ryohidaka/nilto-js)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -136,6 +137,10 @@ const content = await nilto.getContentById(id);
 
 console.log(content);
 ```
+
+## ドキュメント
+
+- https://jsr.io/@hidaka/nilto/doc
 
 ## Link
 
