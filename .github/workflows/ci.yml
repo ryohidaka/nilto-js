@@ -1,0 +1,50 @@
+name: CI
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: canary
+          cache: true
+
+      - name: Run fmt
+        run: |
+          deno fmt --check
+
+      - name: Run lint
+        run: |
+          deno lint
+
+      - name: Check mod.ts
+        run: |
+          deno check mod.ts
+
+      - name: Run tests
+        run: |
+          deno task test
+
+      - name: Create coverage files
+        run: |
+          deno task test --coverage=coverage
+          deno coverage ./coverage --lcov > coverage.lcov
+
+      - name: Collect coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Dry-run deno publish
+        run: |
+          npx jsr publish --dry-run --allow-dirty

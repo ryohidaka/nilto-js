@@ -1,0 +1,32 @@
+{
+  "name": "@hidaka/nilto",
+  "version": "0.1.0",
+  "description": "JavaScript SDK Client for NILTO.",
+  "exports": "./mod.ts",
+  "tasks": {
+    "dev": "deno test --watch --allow-read --allow-net",
+    "test": "deno test --allow-read --allow-net --doc --parallel"
+  },
+  "license": "MIT",
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryohidaka/nilto-js.git"
+  },
+  "keywords": [],
+  "authors": [
+    {
+      "name": "ryohidaka",
+      "url": "https://github.com/ryohidaka"
+    }
+  ],
+  "homepage": "https://github.com/ryohidaka/nilto-js#readme",
+  "bugs": {
+    "url": "https://github.com/ryohidaka/nilto-js/issues"
+  },
+  "fmt": {
+    "exclude": ["CHANGELOG.md", "docs", "src"]
+  }
+}

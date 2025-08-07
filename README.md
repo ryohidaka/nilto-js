@@ -11,10 +11,24 @@
 
 ## Installation
 
-You can install this library using npm:
+### Node.js
 
-```shell
-npm install nilto
+```sh
+npm i nilto
+```
+
+### Deno
+
+#### Add Package
+
+```sh
+deno add jsr:@hidaka/nilto
+```
+
+#### Import symbol
+
+```sh
+import * as nilto from "@hidaka/nilto";
 ```
 
 ## Functions
@@ -37,44 +51,90 @@ npm install nilto
 
 #### Usage Example
 
-```ts
+##### Node.js
+
+```ts ignore
 import { Nilto } from "nilto";
 
 const nilto = new Nilto("your-api-key");
+
 const params: GetContentsParams = {
   model: "blog_articles",
   limit: 10,
   offset: 0,
 };
-const contentsResponse = await nilto.getContents(params);
-console.log(contentsResponse.contents);
+
+const res = await nilto.getContents(params);
+
+console.log(`Total: ${res.total}`);
+console.log(`Offset: ${res.offset}`);
+console.log(`Limit: ${res.limit}`);
+console.table(res.contents);
 ```
 
-### `getContentsID(contentId: string): Promise<GetContentResponse>`
+##### Deno
+
+```ts
+import { type GetContentsParams, Nilto } from "@hidaka/nilto";
+
+const nilto = new Nilto("your-api-key");
+
+const params: GetContentsParams = {
+  model: "blog_articles",
+  limit: 10,
+  offset: 0,
+};
+
+const res = await nilto.getContents(params);
+
+console.log(`Total: ${res.total}`);
+console.log(`Offset: ${res.offset}`);
+console.log(`Limit: ${res.limit}`);
+console.table(res.data);
+```
+
+### `getContentById(id: string): Promise<Content>`
 
 指定した ID のコンテンツを取得します。
 
 #### Parameters
 
-| Parameter   | Type     | Description               |
-| ----------- | -------- | ------------------------- |
-| `contentId` | `string` | 取得するコンテンツの ID。 |
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `id`      | `string` | 取得するコンテンツの ID。 |
 
 #### Returns
 
-| Type                          | Description                                                                      |
-| ----------------------------- | -------------------------------------------------------------------------------- |
-| `Promise<GetContentResponse>` | 指定されたコンテンツ ID に対応するコンテンツデータを含むレスポンスオブジェクト。 |
+| Type               | Description                                        |
+| ------------------ | -------------------------------------------------- |
+| `Promise<Content>` | 指定されたコンテンツ ID に対応するコンテンツデータ |
 
 #### Usage Example
 
-```ts
+##### Node.js
+
+```ts ignore
 import { Nilto } from "nilto";
 
 const nilto = new Nilto("your-api-key");
-const contentId = "12345";
-const contentResponse = await nilto.getContentsID(contentId);
-console.log(contentResponse.content);
+
+const id = "12345";
+const content = await nilto.getContentById(id);
+
+console.log(content);
+```
+
+##### Deno
+
+```ts
+import { Nilto } from "@hidaka/nilto";
+
+const nilto = new Nilto("your-api-key");
+
+const id = "12345";
+const content = await nilto.getContentById(id);
+
+console.log(content);
 ```
 
 ## Link
@@ -84,4 +144,5 @@ console.log(contentResponse.content);
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
