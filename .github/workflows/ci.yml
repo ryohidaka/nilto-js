@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Deno
         uses: denoland/setup-deno@v2
@@ -40,7 +40,7 @@ jobs:
           deno coverage ./coverage --lcov > coverage.lcov
 
       - name: Collect coverage
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
           files: ./coverage.lcov
           token: ${{ secrets.CODECOV_TOKEN }}
